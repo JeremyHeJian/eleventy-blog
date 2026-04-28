@@ -1,0 +1,21 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.w3.org/2001/sitemap/0.9">
+  <url>
+    <loc>{{ site.url }}/</loc>
+  </url>
+  {%- for post in collections.blogpost %}
+  <url>
+    <loc>{{ site.url }}{{ post.url }}</loc>
+    <lastmod>{{ post.data.pubDate | isoDate }}</lastmod>
+  </url>
+  {%- endfor %}
+  {%- for tag in collections.tagList %}
+  <url>
+    <loc>{{ site.url }}/tags/{{ tag | slugify }}/</loc>
+  </url>
+  {%- endfor %}
+</urlset>

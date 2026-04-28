@@ -1,0 +1,22 @@
+---
+permalink: /rss.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Astro Blog</title>
+  <subtitle>A blog built with Astro</subtitle>
+  <link href="{{ site.url }}/rss.xml" rel="self" />
+  <link href="{{ site.url }}/" />
+  <updated>{{ collections.blogpost | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>{{ site.url }}</id>
+  {%- for post in collections.blogpost %}
+  <entry>
+    <title>{{ post.data.title }}</title>
+    <link href="{{ post.url | absoluteUrl(site.url) }}" />
+    <updated>{{ post.data.pubDate | dateToRfc3339 }}</updated>
+    <id>{{ post.url | absoluteUrl(site.url) }}</id>
+    <summary>{{ post.data.description }}</summary>
+  </entry>
+  {%- endfor %}
+</feed>

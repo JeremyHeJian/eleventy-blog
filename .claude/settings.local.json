@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(claude mcp *)",
+      "mcp__playwright"
     ]
   }
 }
